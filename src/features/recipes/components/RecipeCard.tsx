@@ -37,9 +37,11 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({
         accessibilityLabel={`Toggle favourite for ${title}`}
         testID={testID ? `${testID}-favourite-toggle` : undefined}
       >
-        {isFavourite && (<View style={styles.heartActive}>
-			<Ionicons name="heart" color={'#6EDC87'} size={16} />
-        </View>)}
+        {isFavourite && (
+          <View style={styles.heartActive}>
+			      <Ionicons name="heart" color={'#6EDC87'} size={16} />
+          </View>
+      )}
       </TouchableOpacity>
       {tag && <Text style={styles.tag}>{tag}</Text>}
       <Text numberOfLines={2} style={styles.title}>

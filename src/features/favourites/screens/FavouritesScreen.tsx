@@ -25,14 +25,11 @@ const FavouritesScreen = () => {
 				testID="favourites-list"
 				data={favourites}
 				keyExtractor={(item) => item.id.toString()}
-				numColumns={2}
-				columnWrapperStyle={styles.columnWrapper}
-				contentContainerStyle={styles.paddingContainer}
 				renderItem={({ item }) => (
 					<SearchRecipeCard
 						title={item.name}
 						image={item.image}
-						tag="Favourite"
+						tag={item.tags?.[0] ?? 'Recipe'}
 						testID={`favourite-card-${item.id}`}
 					/>
 				)}
@@ -58,8 +55,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		marginBottom: 16,
 	},
-
-	paddingContainer: { padding: 16 }
 });
 
 export default FavouritesScreen;
