@@ -19,3 +19,27 @@ buildscript {
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+subprojects { subproject ->
+    def desiredMinSdk = rootProject.ext.minSdkVersion
+
+    subproject.plugins.withId("com.android.application") {
+        subproject.android {
+            defaultConfig {
+                if (minSdkVersion == null || minSdkVersion.apiLevel < desiredMinSdk) {
+                    minSdk desiredMinSdk
+                }
+            }
+        }
+    }
+
+    subproject.plugins.withId("com.android.library") {
+        subproject.android {
+            defaultConfig {
+                if (minSdkVersion == null || minSdkVersion.apiLevel < desiredMinSdk) {
+                    minSdk desiredMinSdk
+                }
+            }
+        }
+    }
+}

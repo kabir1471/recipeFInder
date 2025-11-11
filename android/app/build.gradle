@@ -84,6 +84,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        missingDimensionStrategy 'detox', 'full'
     }
     signingConfigs {
         debug {
@@ -116,4 +118,7 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+    androidTestImplementation(project(":detox"))
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
 }
