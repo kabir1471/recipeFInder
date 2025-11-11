@@ -12,7 +12,7 @@ const config = {
 		alias: {
 			'@app': path.resolve(__dirname, 'src/app'),
 			'@features': path.resolve(__dirname, 'src/features'),
-			'@types': path.resolve(__dirname, 'src/types'),
+			'@appTypes': path.resolve(__dirname, 'src/types'),
 		},
   	},
 };

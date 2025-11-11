@@ -9,7 +9,7 @@ module.exports = {
         alias: {
           '@app': './src/app',
           '@features': './src/features',
-          '@types': './src/types',
+          '@appTypes': './src/types',
         },
       },
     ],
