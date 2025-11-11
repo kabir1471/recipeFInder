@@ -40,7 +40,7 @@ export const MainTabs = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#64B313',
-        tabBarStyle: { backgroundColor: '#fff', borderTopWidth: 0, elevation: 4 },
+        tabBarStyle: { backgroundColor: '#efefef', borderTopWidth: 0, borderTopColor: '#efefef', elevation: 4 },
       }}
     >
       <Tab.Screen
