@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, RefreshControl, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useRecipesInfiniteQuery, useRecipesSearch } from '../data/useRecipeApi';
 import PageLayout from '@features/common/components/PageLayout';
-import { RecipeCard } from '@features/common/components/RecipeCard';
+import { RecipeCard } from '@features/recipes/components/RecipeCard';
 import { RecipeScreenNavigationProp } from '@appTypes/RecipeScreenNavProps';
 import { useNavigation } from '@react-navigation/native';
 import ItemSeparatorComponent from '@features/common/components/ItemSeparatorComponent';
 import { logo } from '@app/assets/images';
-import { SearchRecipeCard } from '../components/SearchRecipeCard';
+import { SearchRecipeCard } from '../../common/components/SearchRecipeCard';
 import Ionicons from '@react-native-vector-icons/ionicons';
 
 const RecipeScreen = () => {
