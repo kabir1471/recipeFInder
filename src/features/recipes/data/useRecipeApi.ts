@@ -43,3 +43,17 @@ export function useRecipesSearch(query: string, enabled = true) {
     staleTime: 1000 * 60 * 5,
   });
 }
+
+export function useRecipeDetail(id: number) {
+  const { restClient } = useRestClient();
+
+  return useQuery({
+      queryKey: ['recipe', id],
+      queryFn: async () => {
+        const { data } = await restClient.get(
+          `${Endpoints.LIST_RECIPES}/${id}`
+        );
+        return data;
+      },
+    });
+}
