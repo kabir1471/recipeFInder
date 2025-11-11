@@ -1,4 +1,5 @@
 import { AppNavigator } from '@app/navigation/AppNavigator';
+import { QueryProvider } from '@app/providers/QueryProvider';
 import { NavigationContainer } from '@react-navigation/native';
 import {
   SafeAreaProvider,
@@ -9,9 +10,11 @@ function App() {
 
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-          <AppNavigator />
-      </NavigationContainer>
+      <QueryProvider>
+        <NavigationContainer>
+            <AppNavigator />
+        </NavigationContainer>
+      </QueryProvider>
     </SafeAreaProvider>
   );
 }
