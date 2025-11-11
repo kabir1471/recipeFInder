@@ -1,5 +1,5 @@
 import { Endpoints } from '@app/assets/Endpoint';
-import { ResponseStatus } from '@appTypes/ApiStatus.enum';
+import { ResponseStatus } from '../../types/ApiStatus.enum';
 import axios, { AxiosError } from 'axios';
 import { useMemo } from 'react';
 
