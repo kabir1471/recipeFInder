@@ -2,13 +2,15 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, RefreshControl, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useRecipesInfiniteQuery, useRecipesSearch } from '../data/useRecipeApi';
 import PageLayout from '@features/common/components/PageLayout';
-import { RecipeCard } from '@features/common/components/RecipeCard';
+import { RecipeCard } from '@features/recipes/components/RecipeCard';
 import { RecipeScreenNavigationProp } from '@appTypes/RecipeScreenNavProps';
 import { useNavigation } from '@react-navigation/native';
 import ItemSeparatorComponent from '@features/common/components/ItemSeparatorComponent';
 import { logo } from '@app/assets/images';
-import { SearchRecipeCard } from '../components/SearchRecipeCard';
+import { SearchRecipeCard } from '../../common/components/SearchRecipeCard';
 import Ionicons from '@react-native-vector-icons/ionicons';
+import { useFavouritesStore } from '@app/store/useFavouritesStore';
+import { Recipe } from '../entities/recipe.model';
 
 const RecipeScreen = () => {
 	const navigation = useNavigation<RecipeScreenNavigationProp>();
@@ -38,6 +40,8 @@ const RecipeScreen = () => {
 
 	const isSearchActive = debouncedQuery.length > 0;
 
+	const { isFavourite, addFavourite, removeFavourite } = useFavouritesStore();
+
 	const handleRefresh = () => {
 		if (!isSearchActive) {
 			refetch();
@@ -63,6 +67,14 @@ const RecipeScreen = () => {
 		navigation.navigate('RecipeDetail', { id });
 	};
 
+	const handleToggleFavourite = (recipe: Recipe) => {
+		if (isFavourite(recipe.id)) {
+			removeFavourite(recipe.id);
+		} else {
+			addFavourite(recipe);
+		}
+	};
+
 	const renderRecipeItem = ({ item }: { item: typeof displayedRecipes[number] }) => {
 		const tag = item.tags?.[0] ?? 'Recipe';
 		if (isSearchActive) {
@@ -72,6 +84,8 @@ const RecipeScreen = () => {
 					title={item.name}
 					image={item.image}
 					tag={tag}
+					onToggleFavourite={() => handleToggleFavourite(item)}
+					isFavourite={isFavourite(item.id)}
 					onPress={() => handlePress(item.id)}
 				/>
 			);
@@ -83,6 +97,7 @@ const RecipeScreen = () => {
 				title={item.name}
 				image={item.image}
 				tag={tag}
+				isFavourite={isFavourite(item.id)}
 				onPress={() => handlePress(item.id)}
 			/>
 		);

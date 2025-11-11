@@ -30,12 +30,12 @@ export const SearchRecipeCard: React.FC<SearchRecipeCardProps> = ({
       </Text>
     </View>
     <TouchableOpacity
-      style={[styles.heartButton, isFavourite && styles.heartButtonActive]}
+      style={[styles.heartButton, isFavourite && styles.heartActive]}
       onPress={onToggleFavourite}
       accessibilityRole="button"
       testID={testID ? `${testID}-favourite-toggle` : undefined}
     >
-      <Ionicons name={isFavourite ? 'heart' : 'heart-outline'} size={18} color="#000" />
+        <Ionicons name="heart" color={'#6EDC87'} size={16} />
     </TouchableOpacity>
   </TouchableOpacity>
 );
@@ -60,24 +60,20 @@ const styles = StyleSheet.create({
   tag: {
     color: '#7ED957',
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '600',
   },
   title: {
-    color: '#fff',
-    fontSize: 14,
-    fontWeight: '600',
+    color: '#0A0B0A',
+    fontSize: 16,
+    fontWeight: '800',
     marginTop: 4,
   },
   heartButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    borderWidth: 1,
-    borderColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#E6F8EC',
+    borderRadius: 20,
+    padding: 6,
   },
-  heartButtonActive: {
-    backgroundColor: '#fff',
+  heartActive: {
+    backgroundColor: '#6EDC87',
   },
 });
