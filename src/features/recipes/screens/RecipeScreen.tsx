@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, FlatList, Image, RefreshControl, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useRecipesInfiniteQuery, useRecipesSearch } from '../data/useRecipeApi';
+import { useRecipesInfiniteQuery, useRecipesSearch } from '@features/recipes/data/useRecipeApi';
 import PageLayout from '@features/common/components/PageLayout';
 import { RecipeCard } from '@features/recipes/components/RecipeCard';
 import { RecipeScreenNavigationProp } from '@appTypes/RecipeScreenNavProps';
