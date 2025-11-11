@@ -4,11 +4,11 @@
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"],
   "compilerOptions": {
     "types": ["node", "jest", "react-native"],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@app": ["src/app/*"],
+      "@app/*": ["src/app/*"],
       "@features/*": ["src/features/*"],
-      "@types/*": ["src/types/*"],
+      "@types/*": ["src/types/*"]
     },
     "strict": true,
     "noImplicitAny": true,
