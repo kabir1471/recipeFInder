@@ -2,6 +2,7 @@ export type Recipe = {
   id: number;
   name: string;
   image: string;
+  tags: string[];
 };
 
 export type RecipesResponse = {
