@@ -8,7 +8,7 @@ module.exports = {
   moduleNameMapper: {
     '^@app/(.*)$': '<rootDir>/src/app/$1',
     '^@features/(.*)$': '<rootDir>/src/features/$1',
-    '^@types/(.*)$': '<rootDir>/src/types/$1',
+    '^@appTypes/(.*)$': '<rootDir>/src/types/$1',
   },
   testPathIgnorePatterns: ['/node_modules/', '/e2e/'],
 };
