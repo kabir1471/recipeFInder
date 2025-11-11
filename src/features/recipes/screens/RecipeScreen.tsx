@@ -1,11 +1,12 @@
 import React from 'react';
-import { ActivityIndicator, FlatList, RefreshControl, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, RefreshControl, StyleSheet, Text, View } from 'react-native';
 import { useRecipesInfiniteQuery } from '../data/useRecipeApi';
 import PageLayout from '@features/common/components/PageLayout';
 import { RecipeCard } from '@features/common/components/RecipeCard';
 import { RecipeScreenNavigationProp } from '@appTypes/RecipeScreenNavProps';
 import { useNavigation } from '@react-navigation/native';
 import ItemSeparatorComponent from '@features/common/components/ItemSeparatorComponent';
+import { logo } from '@app/assets/images';
 
 const RecipeScreen = () => {
 	const navigation = useNavigation<RecipeScreenNavigationProp>();
@@ -35,21 +36,22 @@ const RecipeScreen = () => {
 
 	if (isLoading) {
 		return (
-		<View style={styles.loadingContainer}>
-			<ActivityIndicator size="large" testID="recipe-loading-indicator" />
-		</View>
+			<View style={styles.loadingContainer}>
+				<ActivityIndicator size="large" testID="recipe-loading-indicator" />
+			</View>
 		);
 	}
 
 	return (
 		<PageLayout>
+			<Image source={logo} style={styles.logo} />
+			<Text style={styles.sectionTitle}>Popular</Text>
 			<FlatList
 				testID="recipe-list"
 				data={recipes}
 				keyExtractor={(item) => item.id.toString()}
 				showsHorizontalScrollIndicator={false}
 				numColumns={2}
-				contentContainerStyle={styles.containerPadding}
 				ItemSeparatorComponent={ItemSeparatorComponent}
 				refreshControl={
 					<RefreshControl refreshing={isRefetching} onRefresh={handleRefresh} />
@@ -59,7 +61,7 @@ const RecipeScreen = () => {
 				ListFooterComponent={
 				isFetchingNextPage ? (
 					<View style={styles.containerPadding}>
-					<ActivityIndicator size="small" />
+						<ActivityIndicator size="small" />
 					</View>
 				) : null
 				}
@@ -87,6 +89,16 @@ const styles = StyleSheet.create({
 
 	containerPadding: {
 		paddingHorizontal: 16,
+	},
+	logo: {
+		width: '50%',
+		resizeMode: 'contain',
+		alignSelf: 'center',
+	},
+	sectionTitle: {
+		fontSize: 24,
+		fontWeight: '800',
+		marginBottom: 12,
 	}
 });
 
