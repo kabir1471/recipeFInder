@@ -3,7 +3,7 @@ import { fireEvent, render } from '@testing-library/react-native';
 import RecipeScreen from '../RecipeScreen';
 import { useRecipesInfiniteQuery, useRecipesSearch } from '@features/recipes/data/useRecipeApi';
 
-jest.mock('../../data/useRecipesApi');
+jest.mock('@features/recipes/data/useRecipeApi');
 
 const mockNavigate = jest.fn();
 jest.mock('@react-navigation/native', () => ({

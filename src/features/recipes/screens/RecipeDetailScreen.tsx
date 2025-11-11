@@ -2,7 +2,7 @@ import React from 'react';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { ActivityIndicator, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFavouritesStore } from '@app/store/useFavouritesStore';
-import { useRecipeDetail } from '../data/useRecipeApi';
+import { useRecipeDetail } from '@features/recipes/data/useRecipeApi';
 import Icon, { Ionicons } from '@react-native-vector-icons/ionicons';
 
 type RootStackParamList = {
@@ -72,7 +72,7 @@ const RecipeDetailScreen = () => {
 				<Text style={styles.title}>{name}</Text>
 				<View style={styles.tagsContainer}>
 					<View style={styles.tag}>
-						<Text style={styles.tagText}>[MEALTYPE]</Text>
+						<Text style={styles.tagText}>{"[MEALTYPE]"}</Text>
 					</View>
 					{(mealType ?? []).map((tag: string, index: number) => (
 						<View key={index} style={styles.tag}>
@@ -80,14 +80,14 @@ const RecipeDetailScreen = () => {
 						</View>
 					))}
 					<View style={styles.tagLight}>
-						<Text style={styles.tagText}>[TAGS]</Text>
+						<Text style={styles.tagText}>{"[TAGS]"}</Text>
 					</View>
 					{(tags ?? []).map((tag: string, index: number) => (
 						<View key={index} style={styles.tagLight}>
 							<Text style={styles.tagText}>{tag}</Text>
 						</View>
 					))}
-				</View>S
+				</View>
 				<View style={styles.infoRow}>
 					<InfoCard label="Servings" value={`${servings} people`} />
 					<InfoCard label="Cook time" value={`${cookTimeMinutes} min`} />
